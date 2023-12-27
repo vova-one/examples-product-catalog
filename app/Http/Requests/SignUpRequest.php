@@ -4,6 +4,20 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\RequestBody(
+ *     request="SignUpRequest",
+ *     required=true,
+ *
+ *     @OA\JsonContent(
+ *
+ *         @OA\Property(property="name", type="string", example="John Smith"),
+ *         @OA\Property(property="email", type="string", example="test@example.com"),
+ *         @OA\Property(property="phone", type="string", example="+79876543232"),
+ *         @OA\Property(property="password", type="string", example="password1"),
+ *     ),
+ * )
+ */
 class SignUpRequest extends FormRequest
 {
     /**
