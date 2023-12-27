@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,3 +20,5 @@ Route::prefix('auth')->group(function () {
     Route::post('signin', [AuthController::class, 'signIn']);
     Route::get('getuser', [AuthController::class, 'getUser']);
 });
+
+Route::resource('products', ProductsController::class)->only('index');
