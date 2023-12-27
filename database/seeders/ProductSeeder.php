@@ -14,6 +14,11 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
+        // Prevent double execution
+        if (Product::count() > 0) {
+            return;
+        }
+
         $faker = Faker::create();
 
         // Create 9-18 random unique property names
@@ -27,7 +32,7 @@ class ProductSeeder extends Seeder
             $fakeProperties[] = $fakeName;
         }
 
-        // Create 100-140 random products with unique random name and random properties
+        // Create 140 random products with unique random name and random properties
         for ($i = 0; $i < rand(100, 140); ++$i) {
             $fakeName = $faker->sentence();
             while (Product::where('name', $fakeName)->first()) {
