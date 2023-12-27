@@ -23,5 +23,8 @@ if [ $# -gt 0 ]; then
         else exec "$@"
     fi
 else
+    gosu www-data php artisan migrate --force --no-interaction
+    gosu www-data php artisan db:seed --force --no-interaction --class=ProductSeeder
+    gosu www-data php artisan scout:sync-index-settings
     exec supervisord -n -c /etc/supervisor/supervisord.conf
 fi
