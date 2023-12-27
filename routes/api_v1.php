@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('auth')->group(function () {
     Route::post('signup', [AuthController::class, 'signUp']);
     Route::post('signin', [AuthController::class, 'signIn']);
-    Route::get('getuser', [AuthController::class, 'getUser']);
+    Route::get('user', [AuthController::class, 'getUser']);
 });
 
 Route::resource('products', ProductsController::class)->only('index');

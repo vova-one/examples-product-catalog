@@ -85,8 +85,9 @@ class AuthController extends Controller
     /**
      * @OA\Get(
      *   tags={"Auth"},
-     *   path="/api/v1/auth/getaccount",
+     *   path="/api/v1/auth/user",
      *   summary="Get account data",
+     *   security={{"Bearer token":{}}},
      *
      *   @OA\Response(
      *       response=200,
