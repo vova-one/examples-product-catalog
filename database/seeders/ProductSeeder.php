@@ -42,6 +42,7 @@ class ProductSeeder extends Seeder
             $product = Product::create([
                 'name' => $fakeName,
                 'count' => rand(10, 1000),
+                'cost' => rand(10000, 1000000) / 100,
             ]);
 
             // Add 3-9 random properties to product
@@ -54,7 +55,7 @@ class ProductSeeder extends Seeder
                     $property->name = $propertyName;
                     $property->product()->associate($product);
                 }
-                $property->value = $faker->words(1);
+                $property->value = $faker->words(1, true);
                 $property->save();
             }
         }

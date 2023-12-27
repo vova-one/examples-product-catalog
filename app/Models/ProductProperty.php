@@ -10,6 +10,11 @@ class ProductProperty extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'value',
+    ];
+
     protected $casts = [
         'value' => 'json',
     ];
