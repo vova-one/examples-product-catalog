@@ -5,6 +5,18 @@ namespace App\Http\Requests;
 use App\Rules\AnyOfRule;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\RequestBody(
+ *     request="SignInRequest",
+ *     required=true,
+ *
+ *     @OA\JsonContent(
+ *
+ *         @OA\Property(property="login", type="string", example="test@example.com"),
+ *         @OA\Property(property="password", type="string", example="password1"),
+ *     ),
+ * )
+ */
 class SignInRequest extends FormRequest
 {
     /**

@@ -4,6 +4,17 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\RequestBody(
+ *     request="ProductIndexRequest",
+ *     required=true,
+ *
+ *     @OA\JsonContent(
+ *
+ *         @OA\Property(property="name", type="string", example="eum sunt"),
+ *     ),
+ * )
+ */
 class ProductIndexRequest extends FormRequest
 {
     /**

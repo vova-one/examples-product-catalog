@@ -18,6 +18,25 @@ class AuthController extends Controller
         $this->middleware('auth:sanctum')->except('signUp', 'signIn');
     }
 
+    /**
+     * @OA\Post(
+     *   tags={"Auth"},
+     *   path="/api/v1/auth/signup",
+     *   summary="Add new account",
+     *
+     *   @OA\RequestBody(ref="#/components/requestBodies/SignUpRequest"),
+     *
+     *   @OA\Response(
+     *       response=201,
+     *       description="Created",
+     *
+     *       @OA\JsonContent(@OA\Property(property="data", ref="#/components/schemas/UserResource")),
+     *   ),
+     *
+     *   @OA\Response(response=422, description="Unprocessable Content"),
+     *   @OA\Response(response=403, description="Forbidden"),
+     * )
+     */
     public function signUp(SignUpRequest $request): UserResource
     {
         $data = $request->validated();
@@ -29,6 +48,25 @@ class AuthController extends Controller
         return UserResource::make($user);
     }
 
+    /**
+     * @OA\Post(
+     *   tags={"Auth"},
+     *   path="/api/v1/auth/signin",
+     *   summary="Retrieve access token",
+     *
+     *   @OA\RequestBody(ref="#/components/requestBodies/SignInRequest"),
+     *
+     *   @OA\Response(
+     *       response=200,
+     *       description="OK",
+     *
+     *       @OA\JsonContent(@OA\Property(property="data", ref="#/components/schemas/TokenResource")),
+     *   ),
+     *
+     *   @OA\Response(response=422, description="Unprocessable Content"),
+     *   @OA\Response(response=403, description="Forbidden"),
+     * )
+     */
     public function signIn(SignInRequest $request): TokenResource
     {
         $login = $request->validated('login');
@@ -44,6 +82,23 @@ class AuthController extends Controller
         throw new AuthorizationException();
     }
 
+    /**
+     * @OA\Get(
+     *   tags={"Auth"},
+     *   path="/api/v1/auth/getaccount",
+     *   summary="Get account data",
+     *
+     *   @OA\Response(
+     *       response=200,
+     *       description="OK",
+     *
+     *       @OA\JsonContent(@OA\Property(property="data", ref="#/components/schemas/UserResource")),
+     *   ),
+     *
+     *   @OA\Response(response=422, description="Unprocessable Content"),
+     *   @OA\Response(response=403, description="Forbidden"),
+     * )
+     */
     public function getUser(Request $request): UserResource
     {
         $user = $request->user();
