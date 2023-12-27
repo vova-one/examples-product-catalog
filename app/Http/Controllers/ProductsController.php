@@ -21,6 +21,9 @@ class ProductsController extends Controller
      *   summary="Get product index",
      *   security={{"Bearer token":{}}},
      *
+     *   @OA\Parameter(name="name", in="query", @OA\Schema(type="string"), example="cupiditate", description="Search query"),
+     *   @OA\Parameter(name="page", in="query", @OA\Schema(type="integer"), example=1, description="Page number"),
+     *
      *   @OA\Response(
      *       response=200,
      *       description="OK",

@@ -120,6 +120,26 @@
                 ],
                 "summary": "Get product index",
                 "operationId": "19bfe44c5a4c96ea4c18170ceea0d0a5",
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "Search query",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "cupiditate"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "example": 1
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
